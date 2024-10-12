@@ -1,5 +1,9 @@
 import { Student } from "../interfaces/student";
-import { findAllStudents, insertStudent } from "../models/student";
+import {
+  findAllStudents,
+  insertStudent,
+  updateStudent,
+} from "../models/student";
 
 // Obtener todos los alumnos
 export const findAll = async () => {
@@ -9,4 +13,8 @@ export const findAll = async () => {
 // Crear un nuevo alumno
 export const insert = async (student: Student) => {
   return await insertStudent(student);
+};
+
+export const update = async (id: number, student: Student) => {
+  return await updateStudent(id, student);
 };

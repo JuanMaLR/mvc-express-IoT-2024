@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { findAll, insert } from "../services/student";
+import { findAll, insert, update } from "../services/student";
 import { Student } from "../interfaces/student";
 
 // Obtener todos los alumnos
@@ -21,5 +21,15 @@ export const createStudent = async (req: Request, res: Response) => {
     res.status(201).json({ message: "Usuario creado exitosamente" });
   } catch (error) {
     res.status(400).json({ message: "Error al crear alumno", error });
+  }
+};
+
+export const updateStudent = async (req: Request, res: Response) => {
+  try {
+    const id = Number.parseInt(req.params.id);
+    const student: Student = req.body;
+    await update(id, student);
+  } catch (error) {
+    res.status(400).json({ message: "Error al actualizar el alumno", error });
   }
 };
