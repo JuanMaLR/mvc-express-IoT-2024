@@ -6,6 +6,8 @@ import {
   updateStudent,
   deleteStudent,
 } from "../controllers/student";
+import validate from "../middlewares/validate";
+import { createStudentSchema } from "../schemas/student";
 
 const router = Router();
 
@@ -13,7 +15,7 @@ const router = Router();
 router.get("/", getStudents);
 
 // Crear un alumno nuevo en la BD
-router.post("/", createStudent);
+router.post("/", validate(createStudentSchema), createStudent);
 
 // Actualizar un alumno de la BD
 router.put("/:id", updateStudent);

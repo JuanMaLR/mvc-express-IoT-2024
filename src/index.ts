@@ -4,6 +4,7 @@ import studentRouter from "./routes/student";
 import testRoutes from "./routes/test";
 import unknownResource from "./middlewares/unknown-resource";
 import unknownError from "./middlewares/unknown-error";
+import validationError from "./middlewares/validation-error";
 
 //Para poder acceder a las variables del ambiente (.env)
 config();
@@ -20,6 +21,7 @@ app.use("/student", studentRouter);
 app.use("/error", testRoutes);
 
 // Middlewares
+app.use(validationError); // Error de validacion
 app.use(unknownResource); // Error 404, recurso no encontrado
 
 // Middlewares de error
