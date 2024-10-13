@@ -9,8 +9,6 @@ import validationError from "./middlewares/validation-error";
 //Para poder acceder a las variables del ambiente (.env)
 dotenvFlow.config();
 
-console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
-
 const app = express();
 
 // Middleware para parsear JSON
