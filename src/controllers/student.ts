@@ -18,7 +18,7 @@ export const createStudent = async (req: Request, res: Response) => {
   try {
     const student: Student = req.body;
     await insert(student);
-    res.status(201).json({ message: "Usuario creado exitosamente" });
+    res.status(201).json({ message: "Alumno creado exitosamente" });
   } catch (error) {
     res.status(400).json({ message: "Error al crear alumno", error });
   }
@@ -29,6 +29,7 @@ export const updateStudent = async (req: Request, res: Response) => {
     const id = Number.parseInt(req.params.id);
     const student: Student = req.body;
     await update(id, student);
+    res.status(201).json({ message: "Alumno actualizado exitosamente" });
   } catch (error) {
     res.status(400).json({ message: "Error al actualizar el alumno", error });
   }
@@ -38,6 +39,7 @@ export const deleteStudent = async (req: Request, res: Response) => {
   try {
     const id = Number.parseInt(req.params.id);
     await deleteById(id);
+    res.status(201).json({ message: "Alumno eliminado exitosamente" });
   } catch (error) {
     res.status(400).json({ message: "Error al eliminar el alumno", error });
   }

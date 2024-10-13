@@ -53,8 +53,16 @@ export const updateStudent = async (
     grade_level,
   } = student;
   await pool.query<ResultSetHeader>(
-    `UPDATE students (first_name, last_name, date_of_birth, email, address, phone, gender, grade_level) 
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?`,
+    `UPDATE students
+     SET first_name = ?, 
+         last_name = ?, 
+         date_of_birth = ?, 
+         email = ?, 
+         address = ?, 
+         phone = ?, 
+         gender = ?, 
+         grade_level = ?
+     WHERE id = ?;`,
     [
       first_name,
       last_name,
