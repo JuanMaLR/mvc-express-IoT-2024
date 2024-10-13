@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { findAll, insert, update } from "../services/student";
+import { findAll, insert, update, deleteById } from "../services/student";
 import { Student } from "../interfaces/student";
 
 // Obtener todos los alumnos
@@ -31,5 +31,14 @@ export const updateStudent = async (req: Request, res: Response) => {
     await update(id, student);
   } catch (error) {
     res.status(400).json({ message: "Error al actualizar el alumno", error });
+  }
+};
+
+export const deleteStudent = async (req: Request, res: Response) => {
+  try {
+    const id = Number.parseInt(req.params.id);
+    await deleteById(id);
+  } catch (error) {
+    res.status(400).json({ message: "Error al eliminar el alumno", error });
   }
 };

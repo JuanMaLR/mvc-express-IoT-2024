@@ -54,7 +54,7 @@ export const updateStudent = async (
   } = student;
   await pool.query<ResultSetHeader>(
     `UPDATE students (first_name, last_name, date_of_birth, email, address, phone, gender, grade_level) 
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?) WHERE id = ?`,
     [
       first_name,
       last_name,
@@ -64,8 +64,15 @@ export const updateStudent = async (
       phone,
       gender,
       grade_level,
+      id,
     ],
   );
 
   return { id, ...student };
+};
+
+export const deleteStudent = async (id: number): Promise<number> => {
+  await pool.query<ResultSetHeader>(`DELETE FROM students WHERE id = ?`, [id]);
+
+  return id;
 };

@@ -4,6 +4,7 @@ import {
   getStudents,
   createStudent,
   updateStudent,
+  deleteStudent,
 } from "../controllers/student";
 
 const router = Router();
@@ -16,5 +17,8 @@ router.post("/", createStudent);
 
 // Actualizar un alumno de la BD
 router.put("/:id", updateStudent);
+
+// Eliminar un alumno de la BD
+router.delete("/:id", deleteStudent);
 
 export default router;
