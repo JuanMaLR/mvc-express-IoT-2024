@@ -18,7 +18,7 @@ const app = express();
 app.use(express.json());
 
 // Rutas de la api
-app.use("/student", studentRouter);
+app.use("/api/v1/student", studentRouter);
 
 // Rutas de prueba
 app.use("/error", testRoutes);
