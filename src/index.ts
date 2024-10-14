@@ -6,8 +6,11 @@ import unknownResource from "./middlewares/unknown-resource";
 import unknownError from "./middlewares/unknown-error";
 import validationError from "./middlewares/validation-error";
 
-//Para poder acceder a las variables del ambiente (.env)
-dotenvFlow.config();
+//Para poder acceder a las variables del ambiente
+// Cargar dotenv-flow solo si no estamos en producción
+if (process.env.NODE_ENV !== "production") {
+  dotenvFlow.config();
+}
 
 const app = express();
 
